@@ -62,10 +62,10 @@ void Budget(double grossIncome) {
     double fedTaxes = CalculateTaxes(grossIncome, fedBrackets);
     double netIncome = grossIncome - idahoTaxes - fedTaxes;
     printf("\n%s\nTAX EST.", spacer);
-    printf("\nGross Income: %.02f", grossIncome);
-    printf("\nIdaho Taxes: [$%.02f", idahoTaxes);
-    printf("]\nFederal Taxes: [$%.02f", fedTaxes);
-    printf("]\nNet Income: %.02f\n", netIncome);
+    printf("\nGross Income: ------------- $%.02f", grossIncome);
+    printf("\nIdaho Taxes: -------------- [$%.02f", idahoTaxes);
+    printf("]\nFederal Taxes: ------------ [$%.02f", fedTaxes);
+    printf("]\nNet Income: --------------- $%.02f\n", netIncome);
     printf(spacer);
     printf("\n");
 }
