@@ -2,15 +2,26 @@
 
 ######## BRACKETS ########
 # bottom,top,percentage
-idahoBrackets = [ # single
-    [0,1540,.0112],
-    [1541,3080,.0312],
-    [3081,4621,.0362],
-    [4622,6161,.0462],
-    [6162,7702,.0562],
-    [7703,11553,.0662],
-    [11554,1000000000,.0692]
+caliBrackets = [ # single
+    [0,10099,.01],
+    [10100,23942,.02],
+    [23943,37788,.04],
+    [37789,52495,.06],
+    [52496,66295,.08],
+    [66296,338639,.093],
+    [338640,406364,.103],
+    [406365,677275,.113],
+    [677276,1000000000,.123],
 ]
+#idahoBrackets = [ # single
+#    [0,1540,.0112],
+#    [1541,3080,.0312],
+#    [3081,4621,.0362],
+#    [4622,6161,.0462],
+#    [6162,7702,.0562],
+#    [7703,11553,.0662],
+#    [11554,1000000000,.0692]
+#]
 fedBrackets = [ # single
     [0,10275,.1],
     [10276,41775,.12],
@@ -44,14 +55,15 @@ def CalculateTaxes(income,brackets): # FY2022
     return round(taxes,2)
 
 def Budget(grossIncome):
-    idahoTaxes = CalculateTaxes(grossIncome,idahoBrackets)
+    #idahoTaxes = CalculateTaxes(grossIncome,idahoBrackets)
+    caliTaxes = CalculateTaxes(grossIncome,caliBrackets)
     fedTaxes = CalculateTaxes(grossIncome,fedBrackets)
-    netIncome = grossIncome-idahoTaxes-fedTaxes
+    netIncome = grossIncome-caliTaxes-fedTaxes
     print(
         "\n"+spacer,
         "\nTAX EST.",
         LineItem("\nGross Income:","$"+str(grossIncome)),
-        LineItem("\nIdaho Taxes:","[$"+str(idahoTaxes)+"]"),
+        LineItem("\nCalifornia Taxes:","[$"+str(caliTaxes)+"]"),
         LineItem("\nFederal Taxes:","[$"+str(fedTaxes)+"]"),
         LineItem("\nNet Income:","$"+str(netIncome)),
         "\n"+spacer

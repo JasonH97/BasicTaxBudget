@@ -3,17 +3,29 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define BRACKET_SIZE 7
+#define BRACKET_SIZE 9
 
-double idahoBrackets[BRACKET_SIZE][3] = { // single
-    {0, 1540, .0112},
-    {1541, 3080, .0312},
-    {3081, 4621, .0362},
-    {4622, 6161, .0462},
-    {6162, 7702, .0562},
-    {7703, 11553, .0662},
-    {11554, 1000000000, .0692}
+double caliBrackets[BRACKET_SIZE][3] = { // single
+    {0,10099,.01},
+    {10100,23942,.02},
+    {23943,37788,.04},
+    {37789,52495,.06},
+    {52496,66295,.08},
+    {66296,338639,.093},
+    {338640,406364,.103},
+    {406365,677275,.113},
+    {677276,1000000000,.123},
 };
+
+//double idahoBrackets[BRACKET_SIZE][3] = { // single
+//    {0, 1540, .0112},
+//    {1541, 3080, .0312},
+//    {3081, 4621, .0362},
+//    {4622, 6161, .0462},
+//    {6162, 7702, .0562},
+//    {7703, 11553, .0662},
+//    {11554, 1000000000, .0692}
+//};
 
 double fedBrackets[BRACKET_SIZE][3] = { // single
     {0, 10275, .1},
@@ -58,12 +70,13 @@ double CalculateTaxes(double income, double brackets[][3]) {
 }
 
 void Budget(double grossIncome) {
-    double idahoTaxes = CalculateTaxes(grossIncome, idahoBrackets);
+    //double idahoTaxes = CalculateTaxes(grossIncome, idahoBrackets);
+    double caliTaxes = CalculateTaxes(grossIncome, caliBrackets);
     double fedTaxes = CalculateTaxes(grossIncome, fedBrackets);
-    double netIncome = grossIncome - idahoTaxes - fedTaxes;
+    double netIncome = grossIncome - caliTaxes - fedTaxes;
     printf("\n%s\nTAX EST.", spacer);
     printf("\nGross Income: ------------- $%.02f", grossIncome);
-    printf("\nIdaho Taxes: -------------- [$%.02f", idahoTaxes);
+    printf("\nCalifornia Taxes: --------- [$%.02f", caliTaxes);
     printf("]\nFederal Taxes: ------------ [$%.02f", fedTaxes);
     printf("]\nNet Income: --------------- $%.02f\n", netIncome);
     printf(spacer);
